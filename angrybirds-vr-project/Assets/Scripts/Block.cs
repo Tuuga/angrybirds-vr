@@ -12,6 +12,8 @@ public class Block : MonoBehaviour {
 	[Tooltip("Time until blocks can start taking damage")]
 	public float settleTime;
 
+	public float score;
+
 	Rigidbody rb;
 	ParticleSystem ps;
 
@@ -36,6 +38,7 @@ public class Block : MonoBehaviour {
 		ps.Play();
 		col.enabled = false;
 		model.SetActive(false);
+		GameManagerScript.AddScore(score);
 		Destroy(gameObject, ps.startLifetime);
 	}
 }
