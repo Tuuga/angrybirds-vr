@@ -4,23 +4,26 @@ using System.Collections;
 public class Block : MonoBehaviour {
 
 	[Tooltip("Force needed to destroy the block")]
-	public float strenght;
+	public float durability;
 
 	Rigidbody rb;
+	ParticleSystem ps;
 
 	void Start () {
 		rb = GetComponent<Rigidbody>();
+		ps = GetComponent<ParticleSystem>();
 	}
 
 	void OnCollisionEnter (Collision c) {
-		print(name + " - " + c.gameObject.name + " " + "Impulse: " + c.impulse.magnitude);
-		if (c.impulse.magnitude > strenght) {
+
+		durability -= c.impulse.magnitude;
+		if (durability <= 0) {
 			BlockDestroy();
 		}
 	}
 
 	void BlockDestroy () {
-		// Particles in future
-		Destroy(gameObject);
+		ps.Play();
+		Destroy(gameObject, ps.startLifetime);
 	}
 }
