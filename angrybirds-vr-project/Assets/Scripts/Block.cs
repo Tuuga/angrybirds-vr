@@ -9,6 +9,9 @@ public class Block : MonoBehaviour {
 	[Tooltip("Minimum collision to register")]
 	public float minColReg;
 
+	[Tooltip("Time until blocks can start taking damage")]
+	public float settleTime;
+
 	Rigidbody rb;
 	ParticleSystem ps;
 
@@ -18,7 +21,7 @@ public class Block : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision c) {
-		if (c.impulse.magnitude > minColReg) {
+		if (c.impulse.magnitude > minColReg && Time.time > settleTime) {
 			durability -= c.impulse.magnitude;
 			if (durability <= 0) {
 				BlockDestroy();
@@ -27,11 +30,11 @@ public class Block : MonoBehaviour {
 	}
 
 	void BlockDestroy () {
-		var bc = GetComponent<BoxCollider>();
 		var model = transform.Find("Model").gameObject;
+		var col = model.GetComponent<Collider>();
 
 		ps.Play();
-		bc.enabled = false;
+		col.enabled = false;
 		model.SetActive(false);
 		Destroy(gameObject, ps.startLifetime);
 	}
