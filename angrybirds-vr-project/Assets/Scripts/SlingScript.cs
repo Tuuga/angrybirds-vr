@@ -55,6 +55,7 @@ public class SlingScript : MonoBehaviour {
             rb.isKinematic = false;
             var heading = slingMiddlePositionMarkerObject.transform.position - slingableObject.transform.position;
             var distance = heading.magnitude;
+												// var dir = heading.normalized;
             var direction = heading / distance; // This is now the normalized direction.
             rb.AddForce(direction * ((distance * 2) * launchVelocity));
 
