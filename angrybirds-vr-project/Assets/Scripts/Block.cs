@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Block : MonoBehaviour {
 
@@ -33,10 +34,7 @@ public class Block : MonoBehaviour {
 
 	void BlockDestroy () {
 		var model = transform.Find("Model").gameObject;
-		var col = model.GetComponent<Collider>();
-
 		ps.Play();
-		col.enabled = false;
 		model.SetActive(false);
 		GameManagerScript.AddScore(score);
 		Destroy(gameObject, ps.startLifetime);

@@ -28,6 +28,7 @@ GameObject:
   - 33: {fileID: 3368102}
   - 23: {fileID: 2380640}
   - 135: {fileID: 13535234}
+  - 65: {fileID: 6564646}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -299,6 +300,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6564646
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.5, z: 0.3}
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!114 &11437170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6a9e8dbf63b65498fcc0c4a06bd089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 10000
+  durability: 10
   minColReg: 2
   settleTime: 2
   score: 10
